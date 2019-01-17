@@ -3,9 +3,9 @@
         <h1 class='title pull-left'>在用重型柴油车排放远程在线监测平台</h1>
         <div class="pull-right">{{username}} <Icon type='md-power' /></div>
         <div class="pull-right">
-            <Menu mode="horizontal" @on-select="handleSelect">
+            <Menu mode="horizontal" @on-select="handleSelect" :active-name="activePath">
                 <Submenu 
-                    v-for="(item, index) in menuArr" 
+                    v-for="(item, index) in menu" 
                     :key="index"
                     :name="item.name" >
                     <template slot="title">
@@ -15,7 +15,7 @@
                         v-for="(t, ind) in item.children"
                         :key="ind"
                         :to="item.path + t.path"
-                        :name="index + '-' + ind">{{t.title}}</MenuItem>
+                        :name="item.path + t.path">{{t.title}}</MenuItem>
                 </Submenu>
             </Menu>
         </div>
@@ -23,28 +23,26 @@
 </template>
 
 <script>
-import MenuArr from '../config/menu.js';
-import { mapActions } from 'vuex';
+import { menu, flatMenu } from '../config/menu.js';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
     name: 'TopHeader',
+    computed: {
+        ...mapGetters({
+            activePath: 'getActivePath'
+        }),
+    },
     data () {
         return {
             username: '平台管理员',
-            menuArr: [...MenuArr.slice(1)]
+            menu: [...menu.slice(1)]
         }
     },
     methods: {
         ...mapActions(['addMenuItem']),
         handleSelect(name) {
-            let arr = name.split('-'), p1 = Number(arr[0]) + 1, p2 = Number(arr[1]);
-            let child = MenuArr[p1].children[p2];
-            let obj = {
-                name: child.name,
-                title: child.title,
-                path: MenuArr[p1].path + MenuArr[p1].children[p2].path
-            };
-            this.addMenuItem(obj);
+            this.addMenuItem(flatMenu.find(item => item.path === name));
         }
     }
 }

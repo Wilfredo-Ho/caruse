@@ -1,12 +1,12 @@
 <template>
     <div class="tabs-menu-wpt">
-        <Tabs type="card" closable @on-tab-remove="handleTabRemove" @on-click="handleTabClick">
+        <Tabs type="card" closable @on-tab-remove="handleTabRemove" @on-click="handleTabClick" :value="activeKey">
             <TabPane 
-                v-for='(item, index) in menu' 
-                :key="index" 
+                v-for='(item) in menu' 
+                :key="item.path" 
                 :label="item.title"
                 :name="item.path"
-                :closable="item.name !== 'home'"></TabPane>
+                :closable="item.path !== '/'"></TabPane>
         </Tabs>
     </div>
 </template>
@@ -17,13 +17,21 @@ export default {
     name: 'TabsMenu',
     computed: {
         ...mapGetters({
-            menu: 'getMenu'
+            menu: 'getMenu',
+            activeKey: 'getActivePath',
+            route: 'redirect'
         }),
     },
     methods: {
         ...mapActions(['removeMenuItem']),
         handleTabRemove (path) {
-            console.log(path)
+            if (this.activeKey === path) {
+                this.$router.push(this.route(path));
+            }
+
+            this.removeMenuItem(path);
+            
+            // window.history.back()
         },
         handleTabClick (path) {
             this.$router.push(path);

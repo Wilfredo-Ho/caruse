@@ -1,4 +1,4 @@
-export default [
+export const menu = [
     {
         path: '/',
         name: 'home',
@@ -118,3 +118,24 @@ export default [
         ]
     }
 ];
+
+const menus = [];
+
+const unfold = (arr, p_obj) => {
+    arr.map((item, index) => {
+        if(item.children && item.children.length > 0) {
+            return unfold(item.children, { path: item.path, name: item.name })
+        } else {
+            menus.push({
+                path: p_obj ? (p_obj.path + item.path) : item.path,
+                name: p_obj ? (p_obj.name + '_' + item.name) : item.name,
+                title: item.title
+            });
+        }
+        return false;
+    });
+}
+
+unfold(menu);
+
+export const flatMenu = menus;

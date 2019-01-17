@@ -15,10 +15,26 @@
 <script>
 import TopHeader from './components/TopHeader';
 import TabsMenu from './components/TabsMenu';
+import { flatMenu } from './config/menu';
+import { mapActions } from 'vuex';
 export default {
   name: 'App',
   data () {
     return {}
+  },
+  methods: {
+    ...mapActions(['setActivePath', 'addMenuItem']),
+  },
+  watch:{
+    $route(to,from){
+      this.setActivePath(to.path);
+    }
+  },
+  mounted () {
+    let path = this.$router.history.current.path
+    if (path !== '/') {
+      this.addMenuItem(flatMenu.find(item => item.path === path))
+    }
   },
   components: {
     TopHeader,
