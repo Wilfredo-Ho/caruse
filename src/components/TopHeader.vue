@@ -1,0 +1,76 @@
+<template>
+    <div class="header-wpt clearfix">
+        <h1 class='title pull-left'>在用重型柴油车排放远程在线监测平台</h1>
+        <div class="pull-right">{{username}} <Icon type='md-power' /></div>
+        <div class="pull-right">
+            <Menu mode="horizontal" @on-select="handleSelect">
+                <Submenu 
+                    v-for="(item, index) in menuArr" 
+                    :key="index"
+                    :name="item.name" >
+                    <template slot="title">
+                        {{item.title}}
+                    </template>
+                    <MenuItem 
+                        v-for="(t, ind) in item.children"
+                        :key="ind"
+                        :to="item.path + t.path"
+                        :name="index + '-' + ind">{{t.title}}</MenuItem>
+                </Submenu>
+            </Menu>
+        </div>
+    </div>
+</template>
+
+<script>
+import MenuArr from '../config/menu.js';
+import { mapActions } from 'vuex';
+
+export default {
+    name: 'TopHeader',
+    data () {
+        return {
+            username: '平台管理员',
+            menuArr: [...MenuArr.slice(1)]
+        }
+    },
+    methods: {
+        ...mapActions(['addMenuItem']),
+        handleSelect(name) {
+            let arr = name.split('-'), p1 = Number(arr[0]) + 1, p2 = Number(arr[1]);
+            let child = MenuArr[p1].children[p2];
+            let obj = {
+                name: child.name,
+                title: child.title,
+                path: MenuArr[p1].path + MenuArr[p1].children[p2].path
+            };
+            this.addMenuItem(obj);
+        }
+    }
+}
+</script>
+
+<style scoped>
+.header-wpt{
+    height: 80px;
+    line-height: 80px;
+    background: #f1faff;
+    color: #595959;
+    border-bottom: 1px solid #e7e7e7;
+    font-size: 0.875rem;
+    padding: 0 1.25rem;
+}
+.title {
+    font-size: 1.375rem;
+    color: #5e5e5e;
+    font-weight: 300;
+}
+.ivu-menu-horizontal{
+    height: 80px;
+    line-height: 80px;
+    background: transparent;
+    margin-right: 4rem;
+}
+</style>
+
+
