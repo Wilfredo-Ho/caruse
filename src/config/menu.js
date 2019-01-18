@@ -5,118 +5,98 @@ export const menu = [
         title: '主页'
     },
     {
-        path: '/monitor',
-        name: 'monitor',
-        title: '车辆监控',
+        path: '/form',
+        name: 'form',
+        title: '表单功能',
         children: [
             {
-                path: '/global',
-                name: 'global',
-                title: '全局监控'
+                path: '/basic',
+                name: 'basic',
+                title: '基础表单'
             },
             {
-                path: '/real',
-                name: 'real',
-                title: '实时监控'
+                path: '/complex',
+                name: 'complex',
+                title: '综合表单'
             },
             {
-              path: '/history',
-              name: 'history',
-              title: '历史监控'
+              path: '/validate',
+              name: 'validate',
+              title: '表单验证'
+            },
+            {
+              path: '/step',
+              name: 'step',
+              title: '分步表单'
             }
         ]
     },
     {
-        path: '/car',
-        name: 'car',
-        title: '车辆管理',
+        path: '/list',
+        name: 'list',
+        title: '列表功能',
         children: [{
-            path: '/info',
-            name: 'info',
-            title: '车辆管理'
+            path: '/regular',
+            name: 'regular',
+            title: '普通列表'
           },
           {
-            path: '/terminal',
-            name: 'terminal',
-            title: '终端管理'
+            path: '/rich',
+            name: 'rich',
+            title: '富文本列表'
+          },
+          {
+            path: '/card',
+            name: 'card',
+            title: '卡片'
           }
         ]
     },
     {
-        path: '/emission',
-        name: 'emission',
-        title: '排放管理',
+        path: '/page',
+        name: 'page',
+        title: '页面管理',
         children: [{
-            path: '/monitor',
-            name: 'monitor',
-            title: '排放监控'
+            path: '/basic',
+            name: 'basic',
+            title: '基础页'
           },
           {
-            path: '/runtime',
-            name: 'runtime',
-            title: '运行统计'
+            path: '/404',
+            name: '404',
+            title: '404页'
           },
           {
-            path: '/excessive',
-            name: 'excessive',
-            title: '排放超标'
-          },
-          {
-            path: '/statistics',
-            name: 'statistics',
-            title: '运行统计'
-          },
-          {
-            path: '/offline',
-            name: 'offline',
-            title: '离线统计'
+            path: '/500',
+            name: '500',
+            title: '500页'
           }
         ]
     },
     {
-        path: '/alarm',
-        name: 'alarm',
-        title: '故障告警',
+        path: '/system',
+        name: 'system',
+        title: '系统管理',
         children: [
             {
-                path: '/query',
-                name: 'query',
-                title: '告警查询'
-            }
-        ]
-    },
-    {
-        path: '/manage',
-        name: 'manage',
-        title: '业务管理',
-        children: [
-            {
-                path: '/envir',
-                name: 'envir',
-                title: '行政部门管理'
-            },
-            {
-                path: '/supplier',
-                name: 'supplier',
-                title: '供应商管理'
-            },
-            {
-                path: '/repairer',
-                name: 'repairer',
-                title: '大户管理'
-            },
-            {
-                path: '/user',
-                name: 'user',
-                title: '账户权限与角色管理'
-            },
-            {
+              path: '/envir',
+              name: 'envir',
+              title: '企业管理'
+            }, {
+              path: '/data',
+              name: 'data',
+              title: '数据管理'
+            }, {
+              path: '/user',
+              name: 'user',
+              title: '人员管理'
+            }, {
                 path: '/bulletin',
                 name: 'bulletin',
-                title: '公告管理'
+                title: '公告',
             }
         ]
-    }
+    },
 ];
 
 const menus = [];

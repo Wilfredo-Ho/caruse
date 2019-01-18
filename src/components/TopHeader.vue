@@ -1,6 +1,6 @@
 <template>
     <div class="header-wpt clearfix">
-        <h1 class='title pull-left'>在用重型柴油车排放远程在线监测平台</h1>
+        <h1 class='title pull-left'>基于VUE的企业级项目管理平台</h1>
         <div class="pull-right">{{username}} <a title="注销" @click='logout'><Icon type='md-power' /></a></div>
         <div class="pull-right">
             <Menu mode="horizontal" @on-select="handleSelect" :active-name="activePath">
@@ -45,7 +45,7 @@ export default {
             this.addMenuItem(flatMenu.find(item => item.path === name));
         },
         logout () {
-            
+
         }
     }
 }
