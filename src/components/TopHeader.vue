@@ -1,7 +1,7 @@
 <template>
     <div class="header-wpt clearfix">
         <h1 class='title pull-left'>在用重型柴油车排放远程在线监测平台</h1>
-        <div class="pull-right">{{username}} <Icon type='md-power' /></div>
+        <div class="pull-right">{{username}} <a title="注销" @click='logout'><Icon type='md-power' /></a></div>
         <div class="pull-right">
             <Menu mode="horizontal" @on-select="handleSelect" :active-name="activePath">
                 <Submenu 
@@ -43,6 +43,9 @@ export default {
         ...mapActions(['addMenuItem']),
         handleSelect(name) {
             this.addMenuItem(flatMenu.find(item => item.path === name));
+        },
+        logout () {
+            
         }
     }
 }
@@ -50,8 +53,8 @@ export default {
 
 <style scoped>
 .header-wpt{
-    height: 80px;
-    line-height: 80px;
+    height: 5rem;
+    line-height: 5rem;
     background: #f1faff;
     color: #595959;
     border-bottom: 1px solid #e7e7e7;
@@ -59,15 +62,16 @@ export default {
     padding: 0 1.25rem;
 }
 .title {
-    font-size: 1.375rem;
+    font-size: 1.5rem;
     color: #5e5e5e;
     font-weight: 300;
 }
 .ivu-menu-horizontal{
-    height: 80px;
-    line-height: 80px;
+    height: 5rem;
+    line-height: 5rem;
     background: transparent;
     margin-right: 4rem;
+    font-size: .875rem;
 }
 </style>
 

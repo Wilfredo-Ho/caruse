@@ -50,29 +50,30 @@ export default {
 
 <style scoped>
 .tabs-menu-wpt{
-    height: 48px;
-    line-height: 48px;
+    height: 3rem;
+    line-height: 3rem;
     background: #fff;
 }
 .tabs-menu-wpt >>> .ivu-tabs-nav-scroll{
-    padding: 6px 0 0;
-    margin: 0 40px;
+    padding: .375rem 0 0;
+    margin: 0 2.5rem;
+    font-size: .875rem;
 }
 .tabs-menu-wpt >>> .ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-tab{
     border-color: #ccc;
     border-radius: 6px 6px 0 0;
     background: #f9f9f9;
-    height: 41px;
+    height: 5.5625rem;
     color: #073f87;
 }
 .tabs-menu-wpt >>>.ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-tab-active{
-    height: 42px;
+    height: 2.625rem;
     background: #ecf0f5;
     border-color: #ccc;
     color: #333;
 }
 .tabs-menu-wpt >>> .ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-nav-container{
-    height: 48px;
+    height: 3rem;
 }
 .tabs-menu-wpt >>> .ivu-tabs-nav-container{
     line-height: 2.3;

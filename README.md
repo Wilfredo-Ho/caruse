@@ -1,5 +1,33 @@
 ### 在用车Vue版本
 
+##### 发布
+    1. 打包后找不到css, js文件：
+
+        >   root/config/index.js
+
+        ```
+            build: {
+                ...,
+                // assetsPublicPath: '/',
+                assetsPublicPath: './',
+                ...
+            }
+        ```
+    2. 打包后找不到字体文件(iview):
+
+        >   build/webpack.prod.conf.js
+
+        ```
+            module: {
+                rules: utils.styleLoaders({
+                sourceMap: config.build.productionSourceMap,
+                // extract: true
+                extract: false
+                })
+            },
+        ```
+
+
 #### 已完成工作：
 
 
@@ -12,4 +40,16 @@
     4. 菜单所有相关MenuItem, TabPane均以path（router）作为key
 
 ---
+
+##### Day2:
+    1. 封装echarts组件:
+
+        >   props: { option | loading | height(单位px) }
+        >   思路： 监听loading, 来控制charts的变化
+    
+    2. 自适应性
+
+        >   采用rem方式，最小屏宽 1000 px
+
+    3. 移除.gitignore中关于dist的限制
 

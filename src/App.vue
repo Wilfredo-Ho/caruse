@@ -5,7 +5,7 @@
         <top-header></top-header>
         <tabs-menu></tabs-menu>
       </Header>
-      <Content>
+      <Content  :style="{padding: hasPadding ? '1rem 2.5rem' : 0}">
         <router-view />
       </Content>
     </Layout>
@@ -20,7 +20,9 @@ import { mapActions } from 'vuex';
 export default {
   name: 'App',
   data () {
-    return {}
+    return {
+      hasPadding: true,
+    }
   },
   methods: {
     ...mapActions(['setActivePath', 'addMenuItem']),
@@ -28,6 +30,10 @@ export default {
   watch:{
     $route(to,from){
       this.setActivePath(to.path);
+
+      // no padding routes
+      let arr = ['/monitor/global']
+      this.hasPadding = arr.indexOf(to.path) >= 0 ? false : true
     }
   },
   mounted () {
@@ -44,6 +50,22 @@ export default {
 </script>
 
 <style>
+html { 
+  font-size: 10px;
+  min-width: 1080px;
+}
+@media screen and (min-width: 998px) {
+  html { font-size: 12px; }
+}
+@media screen and (min-width: 1200px) {
+  html { font-size: 14px; }
+}
+@media screen and (min-width: 1400px) {
+  html { font-size: 16px; }
+}
+@media screen and (min-width: 2000px) {
+  html { font-size: 18px; }
+}
 
 /* 浮动 */
 .pull-left{
@@ -55,13 +77,14 @@ export default {
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 .clearfix{*+height:1%;}
 
+/* 修复发布问题 */
 .ivu-layout-header{
-  height: 128px;
-  padding: 0;
+  height: 8rem !important;
+  padding: 0 !important;
 }
 .ivu-layout-content{
-  height: calc(100vh - 128px);
-  max-height: calc(100vh - 128px);
+  height: calc(100vh - 8rem);
+  max-height: calc(100vh - 8rem);
   overflow-y: auto;
   background: rgb(236, 240, 245);
 }
