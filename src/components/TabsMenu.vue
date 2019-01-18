@@ -63,7 +63,7 @@ export default {
     border-color: #ccc;
     border-radius: 6px 6px 0 0;
     background: #f9f9f9;
-    height: 5.5625rem;
+    height: 2.5625rem;
     color: #073f87;
 }
 .tabs-menu-wpt >>>.ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-tab-active{
